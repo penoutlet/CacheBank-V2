@@ -6,9 +6,8 @@ import java.util.Scanner;
 import Users.Admin;
 import items.Account;
 import items.ApprovedAccounts;
-import items.Handler;
 import items.PendingAccounts;
-import items.UtilityMenus;
+import utilities.Handler;
 
 public class AdminMenu {
 	static Scanner sc = new Scanner(System.in);

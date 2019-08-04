@@ -6,16 +6,18 @@ import java.util.Scanner;
 import items.Account;
 import items.ApprovedAccounts;
 import items.PendingAccounts;
+import utilities.Dummies;
 
 public class MainMenu {
 	static Scanner sc;
 	static String[] optionsArray = { "1. Customer", "2. Employee", "3. Admin", "4. Return to login menu." };
 
 	public static void firstLoginMenu() {
+		Dummies.addDummies();
 		sc = new Scanner(System.in);
 		boolean flag = true;
 		System.out.println("Welcome to Stacks of Cache Bank.");
-		System.out.println("1. Sign up.\n2. Sign in.\n3. Add test dummies.");
+		System.out.println("1. Sign up.\n2. Sign in.");
 		while (flag) {
 
 			String newUser = sc.nextLine();
@@ -37,11 +39,11 @@ public class MainMenu {
 				mainMenu();
 				flag = !flag;
 				break;
-			case "3":
-				ApprovedAccounts.addDummies();
-				firstLoginMenu();
-				flag = !flag;
-				break;
+//			case "3":
+//				Dummies.addDummies();
+//				firstLoginMenu();
+//				flag = !flag;
+//				break;
 			default:
 				firstLoginMenu();
 				flag = !flag;

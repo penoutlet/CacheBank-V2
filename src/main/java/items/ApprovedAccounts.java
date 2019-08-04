@@ -25,15 +25,6 @@ public class ApprovedAccounts implements Serializable {
 	private static final Employee emp = new Employee();
 	// private static Logger log = Logger.getLogger(ApprovedAccounts.class);
 
-	// add test peoples
-	public static void addDummies() {
-		addOne("testa", new Account("testa", "testa", 10000, "testa", "testa",true));
-		addOne("testb", new Account("testb", "testb", 10000, "testb", "testb",true));
-		addOne("testc", new Account("testc", "testc", 10000, "testc", "testc",true));
-		addOne("testd", new Account("testd", "testd", 10000, "testd", "testd",true));
-		PendingAccounts.addOne("testp", new Account("testp", "testp", 10000, "testp", "testp"));
-	}
-
 	public static void addAll(ArrayList<Account> data) {
 		System.out.println(data.toString());
 		for (Account a : data) {
@@ -45,7 +36,8 @@ public class ApprovedAccounts implements Serializable {
 	public static void deserialize() throws FileNotFoundException {
 		ArrayList<Account> accounts = new ArrayList<Account>();
 		System.out.println("deserialize inside of approved.");
-		accounts.add((Account) Persistence.readData("./approvedaccounts.txt"));
+//		accounts.add((Account) Persistence.readData("./approvedaccounts.txt")); if there is only one account in the txt file
+		accounts.addAll((ArrayList)Persistence.readData("./approvedaccounts.txt"));
 		addAll(accounts);
 	}
 

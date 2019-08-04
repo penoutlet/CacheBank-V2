@@ -10,7 +10,7 @@ import items.PendingAccounts;
 public class EmployeeMenu {
 	static Scanner sc = new Scanner(System.in);
 	static String[] optionsArray = { "1. View an approved account", "2. Approve or deny a pending account.",
-			"3. View all usernames of pending accounts.", "4.Return to previous menu (logout)." };
+			"3. Return to previous menu (logout)." };
 
 	public static void actionMenu() {
 		System.out.println("What would you like to do?");
@@ -50,6 +50,7 @@ public class EmployeeMenu {
 				username += sc.nextLine();
 				account = PendingAccounts.fetchOne(username);
 				if(account != null) {
+					System.out.println(account.toString());
 					approveOrDenyMenu(account);
 				}
 				System.out.println("No user found.");
@@ -57,11 +58,6 @@ public class EmployeeMenu {
 				flag=!flag;
 				break;
 			case "3":
-				PendingAccounts.fetchAll();
-				EmployeeMenu.actionMenu();
-				flag = !flag;
-				break;
-			case "4":
 				MainMenu.mainMenu();
 				flag = !flag;
 				break;

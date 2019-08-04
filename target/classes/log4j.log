@@ -13,3 +13,17 @@
 2019-08-04 10:03:27 INFO  Transaction:19 - testa withdrew 500000.0
 2019-08-04 10:03:33 INFO  Transaction:13 - testa deposited 500000.0
 2019-08-04 10:03:42 INFO  Transaction:25 - testa transferred 60000.0 to testb
+2019-08-04 10:14:40 INFO  Transaction:13 - testa deposited 313141.0
+2019-08-04 10:14:51 INFO  Transaction:19 - testa withdrew 345345.0
+2019-08-04 10:15:37 INFO  Transaction:19 - testa withdrew 60000.0
+2019-08-04 10:15:48 INFO  Transaction:25 - testa transferred 50000.0 to testc
+2019-08-04 10:19:22 INFO  Transaction:13 - testa deposited 500000.0
+2019-08-04 10:19:29 INFO  Transaction:19 - testa withdrew 601110.0
+2019-08-04 10:19:33 INFO  Transaction:19 - testa withdrew 51500.0
+2019-08-04 10:19:41 INFO  Transaction:25 - testa transferred 50000.0 to testb
+2019-08-04 10:20:09 INFO  Transaction:25 - testb transferred 50000.0 to testc
+2019-08-04 10:29:32 INFO  Transaction:19 - testa withdrew 8.0
+2019-08-04 10:29:38 INFO  Transaction:25 - testa transferred 555.0 to testb
+2019-08-04 10:31:25 INFO  Transaction:19 - testb withdrew 5555555.0
+2019-08-04 10:41:37 INFO  Employee:32 - testp was approved.
+2019-08-04 10:46:05 INFO  Employee:32 - testp was approved.

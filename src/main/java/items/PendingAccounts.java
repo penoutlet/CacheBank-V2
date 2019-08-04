@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Scanner;
 import java.util.Set;
 
 import Menus.MainMenu;
@@ -15,7 +14,6 @@ public class PendingAccounts implements Serializable {
 	 */
 	private static final long serialVersionUID = 7812411237134521524L;
 	static HashMap<String, Account> pendingAccounts = new HashMap<String, Account>();
-	private static Scanner sc = new Scanner(System.in);
 
 	// methods for pending accounts hashmap
 
@@ -58,9 +56,6 @@ public class PendingAccounts implements Serializable {
 			Account a = pendingAccounts.get(key);
 			pendingList.add(a);
 		}
-		if (pendingAccounts.isEmpty()) {
-			System.out.println("No pending accounts.");
-		}
 
 		return pendingList;
 	}
@@ -91,39 +86,4 @@ public class PendingAccounts implements Serializable {
 			MainMenu.mainMenu();
 		}
 	}
-
-	// public static Account createNewUser() {
-	// Account newAccount = null;
-	// System.out.println("Enter a username.");
-	//// sc.nextLine();
-	// String username = sc.nextLine();
-	// System.out.println("Enter a password.");
-	// String pw = sc.nextLine();
-	// System.out.println("Enter first name.");
-	// String firstname = sc.nextLine();
-	// System.out.println("Enter last name.");
-	// String lastname = sc.nextLine();
-	// System.out.println("Enter a balance");
-	// double balance = sc.nextDouble();
-	// System.out.println("Joint account? 1 for yes, 2 for no.");
-	// sc.nextLine();
-	// String joint = sc.nextLine();
-	// switch(joint) {
-	// case "1":
-	// System.out.println("Enter a second username");
-	// sc.nextLine();
-	// String username2 = sc.nextLine();
-	// newAccount = new Account(username,pw,balance,firstname,lastname,username2);
-	// addOne(username2, newAccount); //adds an extra duplicate account as value
-	// break;
-	// case "2":
-	// newAccount = new Account(username,pw,balance,firstname,lastname);
-	//
-	// }
-	// addOne(username, newAccount);
-	// MainMenu.firstLoginMenu();
-	// return newAccount;
-	// }
-	//
-
 }
