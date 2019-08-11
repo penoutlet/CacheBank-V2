@@ -1,93 +1,132 @@
-package Menus;
+package menus;
 
+import java.util.List;
 import java.util.Scanner;
 
-import Users.Employee;
-import items.Account;
-import items.ApprovedAccounts;
-import items.PendingAccounts;
+import beans.Account;
+import beans.User;
+import dao.Transaction;
 
 public class EmployeeMenu {
 	static Scanner sc = new Scanner(System.in);
-	static String[] optionsArray = { "1. View an approved account", "2. Approve or deny a pending account.",
-			"3. Return to previous menu (logout)." };
+	MainMenu mainMenu = new MainMenu();
+	AdminMenu adminMenu = new AdminMenu();
+	
+	static String[] optionsArray = {"1. Find an account.","2. View all usernames.","3. Return to prior menu (logout)."};
 
-	public static void actionMenu() {
-		System.out.println("What would you like to do?");
+	public void mainMenu() {
+		System.out.println("Employee, what would you like to do?");
 
 		for (int i = 0; i < optionsArray.length; i++) {
 			System.out.println(optionsArray[i]);
 		}
 		sc = new Scanner(System.in);
 		String choice = sc.nextLine();
-		handleInput(choice);
+		firstInputHandler(choice);
 	}
-
-	public static void handleInput(String choice) {
-		Account account = null;
-		String username = "";
+	
+	public void loginMenu() {
+		Transaction t = new Transaction();
 		sc = new Scanner(System.in);
+		System.out.println("Enter username.");
+		String un = sc.nextLine();
+		System.out.println("Enter password");
+		String pw = sc.nextLine();
+
+		User user = t.login(un, pw);
+		if(user==null) {
+			System.out.println("No user found.");
+			mainMenu.mainMenu();
+		}
+		String aid = t.findAIDByUsername(un);
+//		Account a = t.findAccountByAID(aid);
+		String foundUn = user.getUsername();
+		String foundPw = user.getPassword();
+		if(!foundUn.equals("emp")) { // if username is not "emp", it is not the employee.
+			System.out.println(foundUn + " is not an employee.");
+			mainMenu.mainMenu();
+		}
+		else if(!pw.equals(foundPw)) { // if username is "emp," but the password is wrong, then no go.
+			System.out.println("Incorrect password.");
+			mainMenu.mainMenu();
+		}
+//		actionMenu(a);
+		mainMenu();
+	}
+	public void firstInputHandler(String choice) {
 		boolean flag = true;
+		sc = new Scanner(System.in);
 		while (flag) {
 
 			switch (choice) {
-			case "1":
-				//view 1 approved
+			case "1": //look up a user by user name, return their account info and the acc
 				System.out.println("Enter a username to fetch.");
-//				sc.nextLine();
-				username += sc.nextLine();
-				account = ApprovedAccounts.fetchOne(username);
-				if (account == null) {
-					System.out.println("Account not found.");
-					actionMenu();
-				} 
-				System.out.println(account.toString());
-				actionMenu();
+				String un = sc.nextLine();
+
+				Transaction t = new Transaction();
+				User user = t.findUser(un);
+				if (user==null) {
+					System.out.println("No user exists.");
+					adminMenu.mainMenu();
+				}
+				String aid = t.findAIDByUsername(user.getUsername());
+				Account a = t.findAccountByAID(aid);
+				if(a==null) {
+					System.out.println("No account exists.");
+					mainMenu();
+				}
+				System.out.println("Username: " + user.getUsername() + ", AID: " + aid + ", balance: " +  a.getBalance());
+				
+				if (!Transaction.checkApproved(a)) {
+					approveOrDenyMenu(a);
+				}
+				
+				mainMenu();
 				flag = !flag;
 				break;
 			case "2":
-				System.out.println("Enter a username to fetch.");
-				username += sc.nextLine();
-				account = PendingAccounts.fetchOne(username);
-				if(account != null) {
-					System.out.println(account.toString());
-					approveOrDenyMenu(account);
+				t = new Transaction();
+				List<String> users = t.findAllUsernames();
+				// List<User> users = udi.findAllUsers();
+				if(users.isEmpty()) {
+					System.out.println("Currently, there are no users.");
+					mainMenu();
 				}
-				System.out.println("No user found.");
-				actionMenu();
-				flag=!flag;
-				break;
-			case "3":
-				MainMenu.mainMenu();
+				System.out.println("All users:");
+				for (String u : users) {
+					System.out.print(u + " | ");
+					}
+				System.out.println();
+				mainMenu();
 				flag = !flag;
 				break;
-			default:
-				System.out.println("Enter 1, 2, or 3.");
+			case "3":
+				mainMenu.mainMenu();
 				flag = !flag;
 				break;
 			}
 		}
 	}
-
-	public static void approveOrDenyMenu(Account a) {
-		System.out.println("1. Approve\n2. Deny\n3.Return to previous menu");
+	public void approveOrDenyMenu(Account a) {
+		System.out.println("1. Approve\n2. Deny (Delete)\n3. Return to previous menu");
 		sc = new Scanner(System.in);
 		String choice = sc.nextLine();
+		Transaction t = null;
 		switch (choice) {
 		case "1":
-			Employee.approve(a);
-			actionMenu();
+			t = new Transaction();
+			t.approveAccount(a);
+			mainMenu();
 			break;
 		case "2":
-			Employee.deny(a);
-			actionMenu();
+			t = new Transaction();
+			t.deleteAccountByAID(a.getAID());
+			;
+			mainMenu();
 			break;
 		case "3":
-			actionMenu();
-			break;
-		default:
-			approveOrDenyMenu(a);
-			break;
+			mainMenu();
+			;
 		}
 	}
 }
