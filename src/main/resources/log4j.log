@@ -38,3 +38,28 @@
 2019-08-11 10:17:33 INFO  Transaction:148 - Account created.
 2019-08-11 10:17:58 INFO  Transaction:193 - Account 2 approved.
 2019-08-11 10:18:11 INFO  Transaction:187 - Account 2 destroyed.
+2019-08-11 15:14:32 INFO  Transaction:67 - User Samuel created.
+2019-08-11 15:14:33 INFO  Transaction:67 - User Greta created.
+2019-08-11 15:14:34 INFO  Transaction:148 - Account created.
+2019-08-11 15:15:47 INFO  Transaction:193 - Account 3 approved.
+2019-08-11 15:16:29 INFO  Transaction:162 - 1.0E7 deposited into account 3
+2019-08-11 15:22:38 INFO  Transaction:67 - User admin created.
+2019-08-11 15:22:39 INFO  Transaction:67 - User emp created.
+2019-08-11 15:23:27 INFO  Transaction:67 - User Tabitha created.
+2019-08-11 15:23:28 INFO  Transaction:67 - User Rusko created.
+2019-08-11 15:23:29 INFO  Transaction:148 - Account created.
+2019-08-11 15:24:08 INFO  Transaction:67 - User Pamela created.
+2019-08-11 15:24:09 INFO  Transaction:67 - User Ronnie created.
+2019-08-11 15:24:09 INFO  Transaction:148 - Account created.
+2019-08-11 15:24:43 INFO  Transaction:67 - User Reginald created.
+2019-08-11 15:24:44 INFO  Transaction:148 - Account created.
+2019-08-11 15:25:28 INFO  Transaction:67 - User Hans created.
+2019-08-11 15:25:29 INFO  Transaction:148 - Account created.
+2019-08-11 15:25:57 INFO  Transaction:187 - Account 4 destroyed.
+2019-08-11 15:26:28 INFO  Transaction:67 - User Logan created.
+2019-08-11 15:26:28 INFO  Transaction:148 - Account created.
+2019-08-11 15:27:38 INFO  Transaction:193 - Account 5 approved.
+2019-08-11 15:27:50 INFO  Transaction:193 - Account 1 approved.
+2019-08-11 15:29:14 INFO  Transaction:218 - 3000.0 transferred from account 1 to accound 5
+2019-08-12 13:40:01 INFO  Transaction:193 - Account 2 approved.
+2019-08-12 13:46:36 INFO  Transaction:218 - 30000.0 transferred from account 2 to accound 1
