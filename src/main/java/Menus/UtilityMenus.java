@@ -22,7 +22,7 @@ public class UtilityMenus {
 		sc = new Scanner(System.in);
 		System.out.println("How much would you like to deposit? ");
 		
-		double depositAmt = sc.nextDouble();
+		try { double depositAmt = sc.nextDouble();
 		if(depositAmt<0) {
 			System.out.println("Negative deposit prohibited.");
 			adminMenu.actionMenu(a);
@@ -33,6 +33,10 @@ public class UtilityMenus {
 			Account updated = t.findAccountByAID(a.getAID());
 			adminMenu.actionMenu(updated);
 			
+		}}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			adminMenu.mainMenu();
 		}
 	}
 
@@ -41,7 +45,7 @@ public class UtilityMenus {
 
 		sc = new Scanner(System.in);
 		System.out.println("How much to withdraw?");
-		Double withdrawalAmt = sc.nextDouble();
+		try { Double withdrawalAmt = sc.nextDouble();
 		if(withdrawalAmt<0) {
 			System.out.println("Negative withdrawals prohibited.");
 			adminMenu.actionMenu(a);
@@ -50,6 +54,10 @@ public class UtilityMenus {
 			t.withdraw(a.getAID(), withdrawalAmt);
 			Account updated = t.findAccountByAID(a.getAID());
 			adminMenu.actionMenu(updated);
+		}}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			adminMenu.mainMenu();
 		}
 	}
 
@@ -57,7 +65,7 @@ public class UtilityMenus {
 		Transaction t = new Transaction();
 		sc = new Scanner(System.in);
 		System.out.println("How much to transfer?");
-		Double transferAmt = sc.nextDouble();
+		try { Double transferAmt = sc.nextDouble();
 		System.out.println("Transfer to who? Enter a username.");
 		sc = new Scanner(System.in);
 		String un = sc.nextLine();
@@ -78,6 +86,10 @@ public class UtilityMenus {
 			System.out.println("Cannot transfer to that user; user not found.");
 			// CustomerMenu.actionMenu(a);
 			adminMenu.actionMenu(a);
+		}}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			adminMenu.mainMenu();
 		}
 	}
 
@@ -107,7 +119,7 @@ public class UtilityMenus {
 		Transaction t = new Transaction();
 		sc = new Scanner(System.in);
 		System.out.println("Enter username.");
-		String un = sc.nextLine();
+		try { String un = sc.nextLine();
 		System.out.println("Enter password");
 		String pw = sc.nextLine();
 
@@ -120,7 +132,11 @@ public class UtilityMenus {
 		Account a = t.findAccountByAID(aid);
 		String foundUn = user.getUsername();
 		String foundPw = user.getPassword();
-			adminMenu.mainMenu();
+			adminMenu.mainMenu();}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			mainMenu.mainMenu();
+		}
 		}
 
 	public void firstInputHandler(String choice) {
@@ -164,9 +180,9 @@ public class UtilityMenus {
 				}
 				System.out.println("All users: ");
 				for (String u : users) {
-					System.out.print(u + " | ");
+					System.out.print(u + ", ");
 				}
-				System.out.println();
+				System.out.println("\n");
 				adminMenu.mainMenu();
 				flag = !flag;
 				break;

@@ -155,6 +155,10 @@ public class Transaction {
 		if (!checkApproved(a)) {
 			return;
 		}
+		else if(amount<0) {
+			System.out.println("Negative deposits prohibited.");
+			return;
+		}
 		Double currBalance = a.getBalance();
 		Double newBalance = currBalance + amount;
 		a.setBalance(newBalance);
@@ -166,6 +170,10 @@ public class Transaction {
 	public void withdraw(String aid, Double amount) {
 		Account a = adi.findAccountByAID(aid);
 		if (!checkApproved(a)) {
+			return;
+		}
+		else if(amount<0) {
+			System.out.println("Negative withdrawals not allowed.");
 			return;
 		}
 		Double currBalance = a.getBalance();
@@ -197,15 +205,19 @@ public class Transaction {
 		Account a1 = adi.findAccountByAID(aid1);
 		Account a2 = adi.findAccountByAID(aid2);
 		if(!checkApproved(a1)) {
-			System.out.println("First account is not approved.");
+			System.out.println("Sender of transfer is not approved.");
 			return;
 		}
 		else if(!checkApproved(a2)) {
-			System.out.println("Second account is not approved.");
+			System.out.println("Recipient of transfer is not approved.");
 			return;
 		}
 		else if(aid1.equals(aid2)) {
 			System.out.println("Cannot transfer to a joint account holder.");
+			return;
+		}
+		else if(amount<0) {
+			System.out.println("Transfer amounts less than zero are prohibited.");
 			return;
 		}
 		Double balanceOne = a1.getBalance();

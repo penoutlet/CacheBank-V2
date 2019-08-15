@@ -17,7 +17,6 @@ public class AdminMenu {
 	UserDimple udi = new UserDimple();
 	AccountDimple adi = new AccountDimple();
 	MainMenu mainMenu = new MainMenu();
-//	UtilityMenus utilMenu = new UtilityMenus();
 	
 	private static String[] optionsArray1 = {"1. Find an account.", "2. View all usernames.", "3. Return to prior menu (logout)."};
 	private static String[] optionsArray2 = {"0. View account","1. Deposit", "2. Withdraw", "3. Transfer", "4. Cancel account (delete) ", "5. Return to admin menu."};

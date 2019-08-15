@@ -94,7 +94,7 @@ public class EmployeeMenu {
 				}
 				System.out.println("All users:");
 				for (String u : users) {
-					System.out.print(u + " | ");
+					System.out.print(u + ", ");
 					}
 				System.out.println();
 				mainMenu();

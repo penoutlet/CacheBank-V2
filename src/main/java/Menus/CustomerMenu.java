@@ -104,7 +104,7 @@ public class CustomerMenu {
 	public void depositMenu(Account a) {
 		sc = new Scanner(System.in);
 		System.out.println("How much would you like to deposit? ");
-		double depositAmt = sc.nextDouble();
+		try { double depositAmt = sc.nextDouble();
 		if(depositAmt<0) {
 			System.out.println("Negative deposit prohibited.");
 			actionMenu(a);
@@ -112,7 +112,12 @@ public class CustomerMenu {
 		Transaction t = new Transaction();
 		t.deposit(a.getAID(), depositAmt);
 		Account updated = t.findAccountByAID(a.getAID());
-		actionMenu(updated);
+		actionMenu(updated);}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			mainMenu.mainMenu();
+		}
+		
 	}
 
 	public void withdrawMenu(Account a) {
@@ -120,17 +125,21 @@ public class CustomerMenu {
 
 		sc = new Scanner(System.in);
 		System.out.println("How much to withdraw?");
-		Double withdrawalAmt = sc.nextDouble();
+		try { Double withdrawalAmt = sc.nextDouble();
 		t.withdraw(a.getAID(), withdrawalAmt);
 		Account updated = t.findAccountByAID(a.getAID());
-		actionMenu(updated);
+		actionMenu(updated);}
+		catch(Exception e) {
+			System.out.println("Invalid input.");
+			mainMenu.mainMenu();
+		}
 	}
 
 	public void transferMenu(Account a) {
 		Transaction t = new Transaction();
 		sc = new Scanner(System.in);
 		System.out.println("How much to transfer?");
-		Double transferAmt = sc.nextDouble();
+		try { Double transferAmt = sc.nextDouble();
 		System.out.println("Transfer to who? Enter a username.");
 		sc = new Scanner(System.in);
 		String un = sc.nextLine();
@@ -144,7 +153,11 @@ public class CustomerMenu {
 			// CustomerMenu.actionMenu(a);
 		}
 		Account updated = t.findAccountByAID(a.getAID());
-		actionMenu(updated);
+		actionMenu(updated);}
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			mainMenu.mainMenu();
+		}
 	}
 
 	public void cancelMenu(Account a) {

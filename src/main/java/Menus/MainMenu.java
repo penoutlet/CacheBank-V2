@@ -94,7 +94,7 @@ public class MainMenu {
 		sc = new Scanner(System.in);
 		Account newAccount = null;
 		System.out.println("Enter a username.");
-		String username = sc.nextLine();
+		try { String username = sc.nextLine();
 		System.out.println("Enter a password.");
 		String pw = sc.nextLine();
 		System.out.println("Enter a balance");
@@ -136,10 +136,14 @@ public class MainMenu {
 			mainMenu();
 			break;
 		}
-		
+		mainMenu();
+		} 
+		catch(Exception e) {
+			System.out.println("Invalid input");
+			firstLoginMenu();
+		}
 //		t.createUser(newUser);
 //		t.createAccount(newAccount);
-		mainMenu();
 		
 
 //		firstLoginMenu();
